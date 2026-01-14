@@ -25,7 +25,7 @@
     <meta property="og:type" content="website" />
 
     <!-- Favicon -->
-    <link rel="icon" href="/images/profile.png" type="image/png" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
 </svelte:head>
 
 <div class="layout">
@@ -68,6 +68,12 @@
         <footer class="footer">
             <p class="footer-text font-mono">2026 &copy; Emmanuel Abelle</p>
             <p class="footer-tech font-mono">Built with Svelte</p>
+            <p class="footer-tech font-mono">
+                Layout inspired by <a href="https://brittanychiang.com/"
+                    >brittanychiang.com</a
+                >
+                and <a href="https://nsh07.github.io/">nsh07.github.io</a>
+            </p>
         </footer>
     </main>
 </div>

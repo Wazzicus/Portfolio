@@ -21,14 +21,14 @@
             {/each}
         </div>
 
-        <div class="about-image" use:reveal={{ delay: 200 }}>
+        <!-- <div class="about-image" use:reveal={{ delay: 200 }}>
             <div class="image-wrapper">
                 <div class="image-placeholder">
                     <span class="initials">EA</span>
                 </div>
                 <div class="image-border"></div>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -78,7 +78,7 @@
 
     .about-content {
         display: grid;
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 1fr;
         gap: var(--space-12);
         align-items: start;
     }

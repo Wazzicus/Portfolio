@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onMount, tick } from "svelte";
     import { fly } from "svelte/transition";
     import { magneticHover } from "$lib/utils/animations";
     import ThemeToggle from "./ThemeToggle.svelte";
@@ -25,12 +25,26 @@
 
     let activeSection = "about";
     let hasLoaded = false;
+    let sidebarElement: HTMLElement;
 
     function scrollToSection(id: string) {
         activeSection = id;
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
+    // Auto-scroll sidebar when last section is active
+    // Auto-scroll sidebar based on active section
+    $: if (hasLoaded && sidebarElement) {
+        if (activeSection === navItems[navItems.length - 1].id) {
+            sidebarElement.scrollTo({
+                top: sidebarElement.scrollHeight,
+                behavior: "smooth",
+            });
+        } else if (activeSection === navItems[0].id) {
+            sidebarElement.scrollTo({ top: 0, behavior: "smooth" });
         }
     }
 
@@ -66,7 +80,7 @@
     });
 </script>
 
-<aside class="sidebar">
+<aside class="sidebar" bind:this={sidebarElement}>
     <div class="sidebar-content">
         <header class="header">
             <h1 class="name">{name}<span class="dot">.</span></h1>
@@ -118,10 +132,19 @@
         flex-direction: column;
         justify-content: space-between;
         z-index: 10;
+        overflow-y: auto;
+        /* Hide scrollbar for cleaner look */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .sidebar::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Opera */
     }
 
     .sidebar-content {
         height: 100%;
+        min-height: min-content; /* Ensure content determines heght if it overflows */
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -129,7 +152,7 @@
     }
 
     .header {
-        margin-bottom: var(--space-12);
+        margin-bottom: var(--space-8);
     }
 
     .name {
@@ -181,7 +204,7 @@
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--space-1);
     }
 
     .nav-link {
@@ -190,7 +213,7 @@
         display: flex;
         align-items: center;
         gap: var(--space-4);
-        padding: var(--space-3) 0;
+        padding: var(--space-2) 0;
         background: none;
         border: none;
         cursor: pointer;
@@ -282,10 +305,12 @@
             width: 100%;
             height: auto;
             padding: var(--space-8) var(--space-6);
+            overflow-y: visible; /* reset for mobile */
         }
 
         .sidebar-content {
             max-width: 100%;
+            min-height: auto;
         }
 
         .navigation {

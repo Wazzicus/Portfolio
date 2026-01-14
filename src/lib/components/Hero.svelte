@@ -65,5 +65,6 @@
         font-size: var(--fs-lg);
         max-width: 500px;
         line-height: 1.7;
+        text-align: justify;
     }
 </style>

@@ -13,7 +13,6 @@
         name="description"
         content="Emmanuel Abelle is an aspiring software developer who builds web and mobile applications with a passion for ethical design and great user experiences."
     />
-    <meta name="google-site-verification" content="2N4nboS17-fx61AvDJnntAHyGa96eWCR12DDBQvoeso" />
     <meta name="keywords" content="Emmanuel Abelle, Software Developer, Portfolio, Svelte, Web Development, Mobile Apps, Nairobi, Kenya" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0a192f" />
@@ -28,13 +27,13 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://emmanuel.abelle.site" />
-    <meta property="og:image" content="https://emmanuel.abelle.site/favicon.png" />
+    <meta property="og:image" content="https://emmanuel.abelle.site/preview.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Emmanuel Abelle | Software Developer" />
-    <meta name="twitter:description" content="An aspiring software developer who builds web and mobile applications with a passion for clean code and great user experiences." />
-    <meta name="twitter:image" content="https://emmanuel.abelle.site/favicon.png" />
+    <meta name="twitter:description" content="An aspiring software developer who builds web and mobile applications with a passion for ethical design and great user experiences." />
+    <meta name="twitter:image" content="https://emmanuel.abelle.site/preview.jpg" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -44,7 +43,7 @@
     <Sidebar
         name="emmanuel abelle"
         title="aspiring software developer"
-        tagline="i build web and mobile applications with a passion for clean code and great user experiences."
+        tagline="i build web and mobile applications with a passion for ethical design and great user experiences."
         socialLinks={[
             {
                 name: "GitHub",

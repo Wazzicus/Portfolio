@@ -57,7 +57,7 @@
             },
             {
                 name: "Email",
-                url: "mailto:emmanuel.abelle@gmail.com",
+                url: "mailto:abelle.emmanuel@gmail.com",
                 icon: "email",
             },
         ]}

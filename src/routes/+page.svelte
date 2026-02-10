@@ -74,7 +74,7 @@
         <About />
         <Skills />
         <Projects />
-        <Contact email="emmanuel.abelle@gmail.com" />
+        <Contact email="abelle.emmanuel@gmail.com" />
 
         <footer class="footer">
             <p class="footer-text font-mono">2026 &copy; Emmanuel Abelle</p>

@@ -12,6 +12,16 @@
             type: "mobile app",
             featured: true,
         },
+        {
+            title: "Portfolio Website",
+            description:
+                "This very website, built to showcase my projects and skills. Designed with a focus on performance, accessibility, and clean aesthetics.",
+            technologies: ["Svelte", "SvelteKit", "TypeScript", "CSS", "SEO"],
+            github: "https://github.com/Wazzicus/Portfolio",
+            demo: "https://emmanuel.abelle.site",
+            type: "web app",
+            featured: false,
+        },
     ];
 
     let filter: "all" | "web app" | "mobile app" = "all";

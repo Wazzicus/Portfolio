@@ -18,7 +18,7 @@
                 "This very website, built to showcase my projects and skills. Designed with a focus on performance, accessibility, and clean aesthetics.",
             technologies: ["Svelte", "SvelteKit", "TypeScript", "CSS", "SEO"],
             github: "https://github.com/Wazzicus/Portfolio",
-            demo: "https://emmanuel.abelle.site",
+            demo: "#",
             type: "web app",
             featured: false,
         },

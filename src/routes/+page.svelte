@@ -27,13 +27,13 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://emmanuel.abelle.site" />
-    <meta property="og:image" content="https://emmanuel.abelle.site/preview.jpg" />
+    <meta property="og:image" content="https://emmanuel.abelle.site/preview.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Emmanuel Abelle | Software Developer" />
     <meta name="twitter:description" content="An aspiring software developer who builds web and mobile applications with a passion for ethical design and great user experiences." />
-    <meta name="twitter:image" content="https://emmanuel.abelle.site/preview.jpg" />
+    <meta name="twitter:image" content="https://emmanuel.abelle.site/preview.png" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" type="image/png" />

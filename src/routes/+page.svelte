@@ -57,7 +57,7 @@
             },
             {
                 name: "Email",
-                url: "mailto:abelle.emmanuel@gmail.com",
+                url: "mailto:emmanuel@abelle.site",
                 icon: "email",
             },
         ]}
@@ -74,7 +74,7 @@
         <About />
         <Skills />
         <Projects />
-        <Contact email="abelle.emmanuel@gmail.com" />
+        <Contact email="emmanuel@abelle.site" />
 
         <footer class="footer">
             <p class="footer-text font-mono">2026 &copy; Emmanuel Abelle</p>

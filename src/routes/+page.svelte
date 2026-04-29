@@ -8,13 +8,13 @@
 </script>
 
 <svelte:head>
-    <title>Emmanuel Abelle</title>
+    <title>Emmanuel Abelle | Software Developer</title>
     <meta
         name="description"
         content="Emmanuel Abelle is an aspiring software developer who builds web and mobile applications with a passion for ethical design and great user experiences."
     />
     <meta name="keywords" content="Emmanuel Abelle, Software Developer, Portfolio, Svelte, Web Development, Mobile Apps, Nairobi, Kenya" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Emmanuel Abelle" />
     <meta name="theme-color" content="#0a192f" />
     <link rel="canonical" href="https://emmanuel.abelle.site" />
 
@@ -27,7 +27,11 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://emmanuel.abelle.site" />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:image" content="https://emmanuel.abelle.site/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Emmanuel Abelle - Software Developer" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,6 +41,23 @@
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    {@html `<script type="application/ld+json">${JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Emmanuel Abelle",
+        "url": "https://emmanuel.abelle.site",
+        "jobTitle": "Software Developer",
+        "description": "An aspiring software developer who builds web and mobile applications with a passion for ethical design and great user experiences.",
+        "sameAs": [
+            "https://github.com/Wazzicus",
+            "https://linkedin.com/in/emmanuel-abelle"
+        ],
+        "image": "https://emmanuel.abelle.site/favicon.png",
+        "email": "mailto:emmanuel@abelle.site"
+    })}</script>`}
 </svelte:head>
 
 <div class="layout">

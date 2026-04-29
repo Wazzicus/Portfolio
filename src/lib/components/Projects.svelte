@@ -6,8 +6,10 @@
             title: "Shopping Manager",
             description:
                 "A household shopping list app built with a focus on simplicity, collaboration, and great design.",
-            technologies: ["Kotlin", "Android", "Firebase", "Material Design"],
+            technologies: ["Kotlin", "Android", "Play Store", "Material Design"],
+            image: "/images/shopping-manager-screenshots.png",
             github: "https://github.com/Wazzicus/Shopping-Manager",
+            playStore: "https://play.google.com/store/apps/details?id=com.emmanuel.shoppingmanager",
             demo: "#",
             type: "mobile app",
             featured: true,
@@ -17,6 +19,7 @@
             description:
                 "This very website, built to showcase my projects and skills. Designed with a focus on performance, accessibility, and clean aesthetics.",
             technologies: ["Svelte", "SvelteKit", "TypeScript", "CSS", "SEO"],
+            image: "images/Portfolio_Screenshot.png",
             github: "https://github.com/Wazzicus/Portfolio",
             demo: "#",
             type: "web app",
@@ -68,6 +71,17 @@
                 use:reveal={{ delay: 150 + i * 100 }}
                 use:hover3D={{ intensity: 5 }}
             >
+                {#if project.image}
+                    <div class="project-image">
+                        <img
+                            src={project.image}
+                            alt="{project.title} preview"
+                            loading="lazy"
+                            on:error={(e) => { const wrapper = e.currentTarget.closest('.project-image') as HTMLElement | null; if (wrapper) wrapper.style.display = 'none'; }}
+                        />
+                    </div>
+                {/if}
+                <div class="project-content">
                 <div class="project-top">
                     <div class="folder-icon">
                         <svg
@@ -111,6 +125,24 @@
                                 </svg>
                             </a>
                         {/if}
+                        {#if project.playStore}
+                            <a
+                                href={project.playStore}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Google Play Store"
+                                class="play-store-link"
+                            >
+                                <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                width="20" 
+                                height="20" 
+                                fill="currentColor" 
+                                viewBox="0 0 16 16">
+                                    <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27"/>
+                                </svg>
+                            </a>
+                        {/if}
                         {#if project.demo && project.demo !== "#"}
                             <a
                                 href={project.demo}
@@ -150,6 +182,7 @@
                         <li class="tech-item font-mono">{tech}</li>
                     {/each}
                 </ul>
+                </div>
             </article>
         {/each}
     </div>
@@ -209,13 +242,58 @@
     .project-card {
         background-color: var(--color-bg-secondary);
         border-radius: var(--radius-lg);
-        padding: var(--space-8);
         display: flex;
         flex-direction: column;
+        overflow: hidden;
         transition:
             transform var(--transition-normal),
             box-shadow var(--transition-normal);
         border: 1px solid transparent;
+    }
+
+    .project-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: linear-gradient(110deg, var(--color-bg-secondary) 30%, var(--color-text-muted) 50%, var(--color-bg-secondary) 70%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .project-image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        background: linear-gradient(to top, var(--color-bg-secondary), transparent);
+        pointer-events: none;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        transition: transform var(--transition-normal);
+    }
+
+    .project-card:hover .project-image img {
+        transform: scale(1.03);
+    }
+
+    .project-content {
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
     }
 
     .project-card:hover {
@@ -306,13 +384,13 @@
             grid-template-columns: 1fr;
         }
 
-        .project-card {
+        .project-content {
             padding: var(--space-6);
         }
     }
 
     @media (max-width: 400px) {
-        .project-card {
+        .project-content {
             padding: var(--space-4);
         }
 

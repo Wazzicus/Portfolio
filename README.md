@@ -1,71 +1,69 @@
-# Portfolio
+<div align="center">
 
-My modern, responsive personal portfolio website([emmanuel.abelle.site](https://emmanuel.abelle.site)) built with SvelteKit and TypeScript.
+# Emmanuel Abelle — Portfolio
 
-## Overview
+A modern, responsive personal portfolio built with **SvelteKit** and **TypeScript**.
 
-This project is a showcase of my work as a software developer, featuring a sleek design with interactive elements. It serves as a central hub for my projects, skills, and contact information.
+**[emmanuel.abelle.site](https://emmanuel.abelle.site)**
+
+![Portfolio Screenshot](static/images/Portfolio_Screenshot.png)
+
+</div>
+
+---
 
 ## Features
 
--   **Interactive UI**: Smooth animations and transitions using custom Svelte actions (`reveal`, `hover3D`).
--   **Responsive Design**: Fully responsive layout that adapts to all screen sizes, from mobile to desktop.
--   **Theme System**: built-in dark mode support with a theme toggle.
--   **Project Showcase**: A dedicated section to display projects with filtering capabilities (planned/disabled in code) and detailed cards.
--   **About Section**: Introduction with a reveal animation.
--   **Contact Information**: Easy access to social links and contact details.
+- **Interactive Animations** — Smooth reveal transitions, 3D hover effects, and scramble text built with custom Svelte actions
+- **Fully Responsive** — Adapts seamlessly from mobile to desktop with a collapsible sidebar layout
+- **Dark Mode**
+- **Project Showcase** — Cards with live images, GitHub links, and Play Store badges
+- **SEO Optimised** — JSON-LD structured data, Open Graph tags, sitemap, and prerendered static pages
+- **Fast** — Static site generation via SvelteKit for instant load times
 
 ## Tech Stack
 
--   **Framework**: [SvelteKit](https://kit.svelte.dev/)
--   **Language**: [TypeScript](https://www.typescriptlang.org/)
--   **Bundler**: [Vite](https://vitejs.dev/)
--   **Styling**: CSS Variables for theming and consistent design.
+| Layer | Technology |
+|-------|-----------|
+| Framework | [SvelteKit](https://kit.svelte.dev/) |
+| Language | [TypeScript](https://www.typescriptlang.org/) |
+| Bundler | [Vite](https://vitejs.dev/) |
+| Styling | CSS custom properties + responsive design tokens |
+| Deployment | Static adapter (prerendered) |
 
-## Development
+## Getting Started
 
 ### Prerequisites
 
--   Node.js (LTS recommended)
--   npm, pnpm, or yarn
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- npm, pnpm, or yarn
 
-### Installation
-
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/portfolio.git
-    cd portfolio
-    ```
-
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-
-### Running the App
-
-Start the development server:
+### Setup
 
 ```bash
+# Clone the repository
+git clone https://github.com/Wazzicus/Portfolio.git
+cd Portfolio
+
+# Install dependencies
+npm install
+
+# Start the dev server
 npm run dev
 ```
 
-The app is typically hosted at `http://localhost:5173`.
+The app will be available at `http://localhost:5173`.
 
-### Building for Production
-
-To create a production build:
+### Production Build
 
 ```bash
+# Build for production
 npm run build
-```
 
-You can preview the production build with:
-
-```bash
+# Preview the build locally
 npm run preview
 ```
 
-## License
+## 📄 Licence
 
 All rights reserved.

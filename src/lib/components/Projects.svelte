@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { reveal, hover3D } from "$lib/utils/animations";
+    import { reveal } from "$lib/utils/animations";
 
     export let projects = [
         {
@@ -69,7 +69,6 @@
                 class="project-card"
                 class:featured={project.featured}
                 use:reveal={{ delay: 150 + i * 100 }}
-                use:hover3D={{ intensity: 5 }}
             >
                 {#if project.image}
                     <div class="project-image">

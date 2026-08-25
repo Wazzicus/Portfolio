@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { reveal, scrambleText } from "$lib/utils/animations";
+    import { reveal } from "$lib/utils/animations";
 
     export let greeting = "hi, my name is";
     export let name = "emmanuel abelle";
@@ -12,7 +12,7 @@
     <div class="hero-content" use:reveal={{ delay: 300 }}>
         <p class="greeting font-mono">{greeting}</p>
         <h1 class="name">
-            <span use:scrambleText={{ duration: 1500 }}>{name}</span><span
+            <span>{name}</span><span
                 class="dot">.</span
             >
         </h1>

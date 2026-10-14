@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { getLocaleContext } from "$lib/stores/locale";
+    const { copy } = getLocaleContext();
     import { reveal } from "$lib/utils/animations";
 
     export let skills = {
@@ -33,15 +35,15 @@
 
 <section id="skills" class="skills">
     <h2 class="section-title" use:reveal>
-        <span class="title-number font-mono">02.</span>
-        skills & technologies
+        <span class="title-number font-mono">03.</span>
+        {$copy.skills.title}
     </h2>
 
     <div class="skills-grid">
         <div class="skill-category" use:reveal={{ delay: 100 }}>
             <h3 class="category-title">
                 <span class="category-icon">⟨/⟩</span>
-                languages
+                {$copy.skills.languages}
             </h3>
             <ul class="skill-list">
                 {#each skills.languages as skill, i}
@@ -55,7 +57,7 @@
         <div class="skill-category" use:reveal={{ delay: 200 }}>
             <h3 class="category-title">
                 <span class="category-icon">◈</span>
-                frameworks
+                {$copy.skills.frameworks}
             </h3>
             <ul class="skill-list">
                 {#each skills.frameworks as skill, i}
@@ -69,7 +71,7 @@
         <div class="skill-category" use:reveal={{ delay: 300 }}>
             <h3 class="category-title">
                 <span class="category-icon">⚙</span>
-                tools & platforms
+                {$copy.skills.tools}
             </h3>
             <ul class="skill-list">
                 {#each skills.tools as skill, i}
@@ -83,12 +85,12 @@
         <div class="skill-category" use:reveal={{ delay: 400 }}>
             <h3 class="category-title">
                 <span class="category-icon">◎</span>
-                concepts
+                {$copy.skills.conceptsTitle}
             </h3>
             <ul class="skill-list">
                 {#each skills.concepts as skill, i}
                     <li class="skill-item" style="--delay: {i * 50}ms">
-                        {skill}
+                        {$copy.skills.concepts[skill as keyof typeof $copy.skills.concepts] ?? skill}
                     </li>
                 {/each}
             </ul>
@@ -150,7 +152,7 @@
         background-color: var(--color-bg-secondary);
         padding: var(--space-6);
         border-radius: var(--radius-lg);
-        border: 1px solid var(--color-text-muted);
+        border: 0px solid var(--color-text-muted);
         transition:
             border-color var(--transition-fast),
             transform var(--transition-fast);

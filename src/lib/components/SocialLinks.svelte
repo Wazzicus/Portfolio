@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { getLocaleContext } from "$lib/stores/locale";
+    const { copy } = getLocaleContext();
     import { magneticHover } from "$lib/utils/animations";
 
     export let links: { name: string; url: string; icon: string }[] = [
@@ -14,7 +16,7 @@
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={link.name}
+            aria-label={link.icon === "email" ? $copy.email : link.name}
             class="social-link"
             use:magneticHover={{ strength: 0.2 }}
         >

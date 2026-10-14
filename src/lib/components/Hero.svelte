@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { reveal } from "$lib/utils/animations";
 
     export let greeting = "hi, my name is";
     export let name = "emmanuel abelle";
@@ -9,7 +8,7 @@
 </script>
 
 <section id="hero" class="hero">
-    <div class="hero-content" use:reveal={{ delay: 300 }}>
+    <div class="hero-content">
         <p class="greeting font-mono">{greeting}</p>
         <h1 class="name">
             <span>{name}</span><span
@@ -65,6 +64,6 @@
         font-size: var(--fs-lg);
         max-width: 500px;
         line-height: 1.7;
-        text-align: justify;
+        text-align: left;
     }
 </style>

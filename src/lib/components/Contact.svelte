@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { getLocaleContext } from "$lib/stores/locale";
+    const { copy } = getLocaleContext();
     import { reveal, magneticHover } from "$lib/utils/animations";
 
     export let heading = "get in touch";
@@ -9,7 +11,7 @@
 
 <section id="contact" class="contact">
     <div class="contact-content" use:reveal>
-        <p class="contact-overline font-mono">04. what's next?</p>
+        <p class="contact-overline font-mono">04. {$copy.contact.overline}</p>
         <h2 class="contact-heading">{heading}</h2>
         <p class="contact-description">{description}</p>
 
@@ -18,7 +20,7 @@
             class="contact-button"
             use:magneticHover={{ strength: 0.15 }}
         >
-            say hello
+            {$copy.contact.button}
         </a>
     </div>
 </section>

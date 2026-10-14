@@ -70,7 +70,7 @@
 
 <style>
     .projects {  padding: var(--space-24) 0; min-width: 0; position: relative; isolation: isolate; }
-    .projects::before { content: ''; position: absolute; z-index: -1; inset: 6rem -1.5rem 2rem; border-radius: 2rem; background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--project-accent) 9%, transparent), transparent 70%); pointer-events: none; transition: background .4s; }
+    .projects::before { content: ''; position: absolute; z-index: -1; inset: 6rem -1.5rem 2rem; border-radius: 2rem; pointer-events: none; transition: background .4s; }
     .section-title { display: flex; align-items: center; gap: var(--space-4); font-size: var(--fs-2xl); margin-bottom: var(--space-6); }
     .title-number { color: var(--color-primary); font-size: var(--fs-lg); font-weight: 400; }
     .section-title::after { content: ''; height: 2px; flex: 1; max-width: 130px; background: var(--color-text-muted); }

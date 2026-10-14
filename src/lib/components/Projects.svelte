@@ -78,8 +78,9 @@
     .project-gallery::-webkit-scrollbar { height: 5px; }
     .project-card { flex: 0 0 92%; min-width: 0; scroll-snap-align: start; background: var(--color-bg-secondary); border-radius: 1rem; overflow: hidden; }
     .project-image { position: relative; overflow: hidden; aspect-ratio: 27 / 20; background: var(--card-backdrop); }
-    .image-meta { position: absolute; z-index: 1; inset: 1.25rem 1.5rem auto; display: flex; justify-content: space-between; color: #fff; font-size: .7rem; letter-spacing: .06em; pointer-events: none; }
+    .image-meta { position: absolute; z-index: 1; inset: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; color: #fff; font-size: .7rem; letter-spacing: .06em; pointer-events: none; }
     .image-meta span { padding: .3rem .5rem; border-radius: .25rem; background: #0a192fcc; }
+    .image-meta span:first-child { align-self: flex-end; }
     .project-image img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .project-content { padding: clamp(1.25rem, 3vw, 2rem); }
     h3 { font-size: clamp(1.65rem, 2.4vw, 2.5rem); line-height: 1.15; letter-spacing: -.035em; max-width: 18ch; margin-bottom: 1.25rem; }

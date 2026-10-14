@@ -1,26 +1,23 @@
 <script lang="ts">
-    import { onMount, tick } from "svelte";
-    import { fly } from "svelte/transition";
+    import { getLocaleContext } from "$lib/stores/locale";
+    const { copy } = getLocaleContext();
+    import LanguageSwitcher from "./LanguageSwitcher.svelte";
+    import { onMount } from "svelte";
     import { magneticHover } from "$lib/utils/animations";
-    import ThemeToggle from "./ThemeToggle.svelte";
     import SocialLinks from "./SocialLinks.svelte";
 
     export let name = "Emmanuel Abelle";
-    export let title = "Aspiring Software Developer";
-    export let tagline =
-        "I build web and mobile applications with a passion for clean code and great user experiences.";
-
     export let socialLinks = [
         { name: "GitHub", url: "https://github.com/", icon: "github" },
-        { name: "LinkedIn", url: "https://linkedin.com/in/", icon: "linkedin" },
-        { name: "Email", url: "mailto:hello@example.com", icon: "email" },
+        { name: "LinkedIn", url: "https://linkedin.com/in/emmanuel-abelle", icon: "linkedin" },
+        { name: "Email", url: "mailto:abelle.emmanuel@gmail.com", icon: "email" },
     ];
 
-    const navItems = [
-        { id: "about", label: "about" },
-        { id: "skills", label: "skills" },
-        { id: "projects", label: "projects" },
-        { id: "contact", label: "contact" },
+    $: navItems = [
+        { id: "about", label: $copy.nav.about },        
+        { id: "projects", label: $copy.nav.projects },
+        { id: "skills", label: $copy.nav.skills },
+        { id: "contact", label: $copy.nav.contact },
     ];
 
     let activeSection = "about";
@@ -84,12 +81,14 @@
     <div class="sidebar-content">
         <header class="header">
             <h1 class="name">{name}<span class="dot">.</span></h1>
-            <h2 class="title">{title}</h2>
-            <p class="tagline">{tagline}</p>
+            <div class="portrait-frame">
+                <img src="/images/emmanuel-abelle.jpg" alt={$copy.portrait} width="1115" height="1410" fetchpriority="high" />
+            </div>
             <SocialLinks links={socialLinks} />
+            <LanguageSwitcher />
         </header>
 
-        <nav class="navigation">
+        <nav class="navigation" aria-label={$copy.navigation}>
             <ul>
                 {#each navItems as item, i}
                     <li>
@@ -113,10 +112,6 @@
                 {/each}
             </ul>
         </nav>
-
-        <div class="sidebar-footer">
-            <ThemeToggle />
-        </div>
     </div>
 </aside>
 
@@ -127,7 +122,7 @@
         left: 0;
         width: var(--sidebar-width);
         height: 100vh;
-        padding: var(--space-20) var(--space-12);
+        padding: var(--space-20) clamp(var(--space-6), 3vw, var(--space-12));
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -168,28 +163,32 @@
         color: var(--color-primary);
     }
 
-    .title {
-        font-family: var(--font-heading);
-        font-variation-settings: "ROND" var(--font-roundness);
-        font-size: var(--fs-xl);
-        color: var(--color-primary);
-        font-weight: var(--fw-medium);
-        margin-bottom: var(--space-4);
-        animation: slideInLeft var(--transition-slow) ease forwards;
-        animation-delay: 100ms;
-        opacity: 0;
-        animation-fill-mode: forwards;
+    @media (min-width: 1025px) {
+        .name { font-size: clamp(1.75rem, 3vw, var(--fs-4xl)); }
     }
 
-    .tagline {
-        color: var(--color-text-secondary);
-        font-size: var(--fs-md);
-        line-height: 1.7;
-        max-width: 300px;
-        animation: slideInLeft var(--transition-slow) ease forwards;
-        animation-delay: 200ms;
-        opacity: 0;
-        animation-fill-mode: forwards;
+    .portrait-frame {
+        width: clamp(150px, 16vw, 190px);
+        margin: var(--space-6) 0;
+        padding: 6px;
+        background: color-mix(in srgb, var(--color-primary) 20%, var(--color-bg));
+        border-radius: 5rem 5rem 1rem 1rem;
+    }
+
+    .portrait-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        border-radius: 4.75rem 4.75rem .65rem .65rem;
+    }
+
+    @media (max-height: 760px) and (min-width: 1025px) {
+        .sidebar { padding-top: var(--space-10); padding-bottom: var(--space-10); }
+        .portrait-frame { width: 145px; margin: var(--space-4) 0; }
+        .header { margin-bottom: var(--space-4); }
+        .navigation { margin-top: var(--space-4); }
     }
 
     .navigation {
@@ -265,13 +264,9 @@
         background-color: var(--color-heading);
     }
 
-    /* Intermediate hover state for non-active items if desired, 
-       but Brittany's style usually expands fully on hover. 
-       Let's keep it consistent with the active width for "exact" feel */
-
     /* Text styling */
     .nav-text {
-        opacity: 0;
+        opacity: 1;
         animation: fadeInText 0.4s ease forwards;
         animation-delay: var(--delay);
         transition: transform var(--transition-fast);
@@ -292,12 +287,6 @@
         transform: translateX(4px);
     }
 
-    .sidebar-footer {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-6);
-        align-items: flex-start;
-    }
 
     @media (max-width: 1024px) {
         .sidebar {
@@ -316,14 +305,6 @@
         .navigation {
             display: none;
         }
-
-        .sidebar-footer {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-4);
-        }
     }
 
     @media (max-width: 400px) {
@@ -333,18 +314,6 @@
 
         .name {
             font-size: var(--fs-2xl);
-        }
-
-        .title {
-            font-size: var(--fs-md);
-        }
-
-        .tagline {
-            font-size: var(--fs-sm);
-        }
-
-        .sidebar-footer {
-            gap: var(--space-3);
         }
     }
 </style>

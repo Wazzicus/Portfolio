@@ -1,22 +1,21 @@
 <script lang="ts">
+    import { getLocaleContext } from "$lib/stores/locale";
+    const { copy } = getLocaleContext();
     import { reveal } from "$lib/utils/animations";
 
-    export let content = [
-        "Hello! I'm Emmanuel, a software developer in the making based in Nairobi, Kenya. I enjoy creating things that live on the internet(and those that don't), whether that be websites, applications, or anything else.",
-        "My main focus these days is learning new technologies and building accessible, inclusive solutions that solve real problems for real users.",
-        "When I'm not coding, you can find me tinkering with open-source projects, taking photos in Expert RAW on my phone or watching The Arsenal!#COYG",
-    ];
+    export let content: string[] | undefined = undefined;
+    $: paragraphs = content ?? $copy.about.paragraphs;
 </script>
 
 <section id="about" class="about">
     <h2 class="section-title" use:reveal>
         <span class="title-number font-mono">01.</span>
-        about me
+        {$copy.about.title}
     </h2>
 
     <div class="about-content">
         <div class="about-text" use:reveal={{ delay: 100 }}>
-            {#each content as paragraph}
+            {#each paragraphs as paragraph}
                 <p>{paragraph}</p>
             {/each}
         </div>
@@ -91,70 +90,7 @@
 
     .about-text p {
         margin-bottom: var(--space-4);
-        text-align: justify;
+        text-align: left;
     }
 
-    .about-image {
-        position: relative;
-        max-width: 280px;
-        justify-self: center;
-    }
-
-    .image-wrapper {
-        position: relative;
-    }
-
-    .image-placeholder {
-        width: 100%;
-        aspect-ratio: 1;
-        background: linear-gradient(
-            135deg,
-            var(--color-primary-dark),
-            var(--color-primary)
-        );
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 1;
-        transition: transform var(--transition-normal);
-    }
-
-    .image-wrapper:hover .image-placeholder {
-        transform: translate(-5px, -5px);
-    }
-
-    .initials {
-        font-size: var(--fs-5xl);
-        font-weight: var(--fw-bold);
-        color: var(--color-bg);
-        opacity: 0.9;
-    }
-
-    .image-border {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        width: 100%;
-        aspect-ratio: 1;
-        border: 2px solid var(--color-primary);
-        border-radius: var(--radius-md);
-        transition: transform var(--transition-normal);
-    }
-
-    .image-wrapper:hover .image-border {
-        transform: translate(-5px, -5px);
-    }
-
-    @media (max-width: 768px) {
-        .about-content {
-            grid-template-columns: 1fr;
-        }
-
-        .about-image {
-            order: -1;
-            max-width: 200px;
-        }
-    }
 </style>
